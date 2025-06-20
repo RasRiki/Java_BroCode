@@ -1,5 +1,4 @@
-import javax.swing.*;
-import java.awt.*;
+package Keylistener;
 
 public class jframe {
     public static void main(String[] args){

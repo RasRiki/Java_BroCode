@@ -1,3 +1,5 @@
+package Keylistener;
+
 import javax.swing.*;
 
 public class jLabel {
@@ -13,7 +15,7 @@ public class jLabel {
         label.setIcon(icon);
         label.setHorizontalTextPosition(JLabel.CENTER); // set text LEFT,CENTER, RIGHT of ImageIcon
         label.setVerticalTextPosition(JLabel.TOP); // set text TOP,CENTER, BOTTOM of ImageIcon
-        
+
 
         MyFrame frame = new MyFrame();
 
