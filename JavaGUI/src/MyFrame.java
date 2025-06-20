@@ -1,11 +1,6 @@
-package Keylistener;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-public class MyFrame extends JFrame implements KeyListener {
+public class MyFrame extends JFrame {
 
     JLabel label;
     MyPanel panel;
@@ -15,22 +10,24 @@ public class MyFrame extends JFrame implements KeyListener {
         panel = new MyPanel();
 
          // mette al centro
-        this.getContentPane().setBackground(new Color(255,255,255)); // change color of the background*/
-        this.setTitle("JFrame Title");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out application ( di solito al posto di exit c'è HIDE_ON_CLOSE)
-        this.setLayout(null);
-        this.setResizable(false); // prevent this from being resized
-        this.setSize(420, 420); // Sets the x-dimension and y-dimension
-        this.addKeyListener(this);
+        //this.getContentPane().setBackground(new Color(255,255,255)); // change color of the background*/
+        //this.setTitle("JFrame Title");
 
-        label = new JLabel();
+        //this.setResizable(false); // prevent this from being resized
+        //this.setSize(420, 420); // Sets the x-dimension and y-dimension
+        //this.addKeyListener(this);
+
+        /*label = new JLabel();
         label.setBounds(0,0,100,100);
         label.setBackground(Color.red);
-        label.setOpaque(true);
+        label.setOpaque(true);*/
 
         //this.add(label);
+        //this.add(panel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out application ( di solito al posto di exit c'è HIDE_ON_CLOSE)
+        //this.setLayout(null);
         this.add(panel);
-
+        this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);// make this visible
 
@@ -39,7 +36,7 @@ public class MyFrame extends JFrame implements KeyListener {
 
     }
 
-    @Override
+    /*@Override
     public void keyTyped(KeyEvent e) {
         // keyTyped = Invoked when a key is typed. Uses keyChar, char output
 
@@ -97,7 +94,7 @@ public class MyFrame extends JFrame implements KeyListener {
         // keyReleased = called whenever a button is released
         System.out.println("You released a key char: " + e.getKeyChar());
         System.out.println("You released a key code: " + e.getKeyCode());
-    }
+    }*/
 
 
 }

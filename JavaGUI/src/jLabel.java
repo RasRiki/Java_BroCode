@@ -1,5 +1,3 @@
-package Keylistener;
-
 import javax.swing.*;
 
 public class jLabel {
