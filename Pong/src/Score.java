@@ -11,14 +11,20 @@ public class Score extends Rectangle{
     int p2 = 0;
 
     Score(int GAME_WIDTH, int GAME_HEIGHT){
-        super(GAME_WIDTH,GAME_HEIGHT);
+        Score.GAME_WIDTH = GAME_WIDTH;
+        Score.GAME_HEIGHT = GAME_HEIGHT;
+
+
     }
     public void draw(Graphics g){
 
         g.setColor(Color.CYAN);
-        g.drawRect(GAME_WIDTH / 4, GAME_HEIGHT / 4, 100, 50);
-        String s = String.valueOf(p1);
+        g.setFont(new Font("Consolas",Font.BOLD, 60));
+        g.drawLine(GAME_WIDTH / 2, 0, GAME_WIDTH / 2, GAME_HEIGHT);
 
-        //g.drawString(p1, GAME_WIDTH, GAME_HEIGHT);
+        g.setColor(Color.YELLOW);
+        g.drawString(String.valueOf(p1), (GAME_WIDTH / 2) - 50, 50);
+        g.setColor(Color.MAGENTA);
+        g.drawString(String.valueOf(p2), (GAME_WIDTH / 2) + 18, 50);
     }
 }

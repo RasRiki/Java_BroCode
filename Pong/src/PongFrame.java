@@ -19,4 +19,5 @@ public class PongFrame extends JFrame{
             this.setVisible(true);
             this.setLocationRelativeTo(null);
     }
+
 }
