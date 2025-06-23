@@ -56,6 +56,7 @@ public class GamePanel extends JPanel implements Runnable{
         p1.draw(g);
         p2.draw(g);
         ball.draw(g);
+        score.draw(g);
     }
 
     public void move(){
@@ -85,45 +86,53 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
         //PALLA CON RACCHETTA 1
-        /*if(ball.x == PADDLE_WIDTH){
-            if(ball.y >= p1.y && ball.y <= (p1.y + PADDLE_HEIGHT)){
-                ball.xVelocity++;
 
+        if(ball.intersects(p1)){
+            ball.xVelocity--;
 
-                ball.setXDirection(ball.xVelocity * -1);
-            }
-        }*/
-
-        if (ball.x + BALL_DIAMETER >= p1.x &&
+            ball.setXDirection(ball.xVelocity * -1);
+        }
+        /*if (ball.x + BALL_DIAMETER >= p1.x &&
                 ball.x <= p1.x + PADDLE_WIDTH &&
                 ball.y + BALL_DIAMETER >= p1.y &&
                 ball.y <= p1.y + PADDLE_HEIGHT){
 
-            ball.xVelocity++;
-            ball.yVelocity++;
+            ball.speed++;
 
             ball.setXDirection(ball.xVelocity * -1);
 
-        }
-
+        }*/
         //PALLA CON RACCHETTA 2
-        /*if(ball.x + BALL_DIAMETER == (GAME_WIDTH - PADDLE_WIDTH))
-            if(ball.y >= p2.y && ball.y <= (p2.y + PADDLE_HEIGHT)) {
-                ball.xVelocity++;
-                ball.yVelocity++;
+        if(ball.intersects(p2)){
+            ball.xVelocity++;
 
-                ball.setXDirection(ball.xVelocity * -1);
-            }*/
-        if (ball.x + BALL_DIAMETER >= p2.x &&
+            ball.setXDirection(ball.xVelocity * -1);
+        }
+        ball.setXDirection(ball.xVelocity);
+       /* if (ball.x + BALL_DIAMETER >= p2.x &&
                 ball.x <= p2.x + PADDLE_WIDTH &&
                 ball.y + BALL_DIAMETER >= p2.y &&
                 ball.y <= p2.y + PADDLE_HEIGHT){
 
-            ball.xVelocity++;
-            ball.yVelocity++;
+            ball.speed++;
 
             ball.setXDirection(ball.xVelocity * -1);
 
+        }*/
+
+        //POINTS
+        if(ball.x <= 0){
+            score.p2++;
+            newPaddle();
+            newBall();
+            System.out.println("P2: " + score.p2);
+        }
+
+        if(ball.x >= GAME_WIDTH - BALL_DIAMETER){
+            score.p1++;
+            newPaddle();
+            newBall();
+            System.out.println("P1: " + score.p1);
         }
 
     }
