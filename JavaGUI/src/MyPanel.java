@@ -35,8 +35,8 @@ public class MyPanel extends JPanel implements ActionListener {
         super.paint(g); // paint background
 
         Graphics2D g2D = (Graphics2D) g;
-        g2D.drawImage(image,x,y,null);
-        //g2D.fillOval(x,y,BALL_WIDTH,BALL_HEIGHT);
+        //g2D.drawImage(image,x,y,null);
+        g2D.fillOval(x,y,BALL_WIDTH,BALL_HEIGHT);
 
     }
 
