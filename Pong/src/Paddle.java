@@ -7,7 +7,7 @@ public class Paddle extends Rectangle{
 
     int id;
     int yVelocity;
-    int speed = 15;
+    int speed = 10;
 
     Paddle(int x, int y, int PADDLE_WIDTH, int PADDLE_HEIGHT, int id){
         super(x,y,PADDLE_WIDTH,PADDLE_HEIGHT);

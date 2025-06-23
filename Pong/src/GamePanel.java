@@ -35,7 +35,9 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
     public void newBall(){
-        ball = new Ball();
+        random = new Random();
+
+        ball = new Ball((GAME_WIDTH / 2) - (BALL_DIAMETER / 2), (GAME_HEIGHT / 2) - (BALL_DIAMETER / 2), BALL_DIAMETER, BALL_DIAMETER);
     }
 
     public void newPaddle(){
@@ -53,26 +55,45 @@ public class GamePanel extends JPanel implements Runnable{
     public void draw(Graphics g){
         p1.draw(g);
         p2.draw(g);
-        //ball.draw(g);
+        ball.draw(g);
     }
 
     public void move(){
-
+        p1.move();
+        p2.move();
+        ball.move();
     }
 
     public void checkCollision(){
-        if(p1.y <= 0){
+        //RACCHETTE
+        if(p1.y <= 0){ // Se la prima racchetta tocca il bordo superiore si ferma
             p1.y = 0;
         }
-        if(p1.y >= GAME_HEIGHT - PADDLE_HEIGHT){
+        if(p1.y >= GAME_HEIGHT - PADDLE_HEIGHT){// Se la prima racchetta tocca il bordo inferiore si ferma
             p1.y = GAME_HEIGHT - PADDLE_HEIGHT;
         }
-        if(p2.y <= 0){
+        if(p2.y <= 0){// Se la seconda racchetta tocca il bordo inferiore si ferma
             p2.y = 0;
         }
-        if(p2.y >= GAME_HEIGHT - PADDLE_HEIGHT){
+        if(p2.y >= GAME_HEIGHT - PADDLE_HEIGHT){// Se la seconda racchetta tocca il bordo superiore si ferma
             p2.y = GAME_HEIGHT - PADDLE_HEIGHT;
         }
+
+        //PALLA CON MURO SOPRA E SOTTO
+        if(ball.y <= 0 || ball.y >= GAME_HEIGHT - (BALL_DIAMETER / 2)){
+            ball.setYDirection(ball.yVelocity * -1);
+        }
+
+        //PALLA CON RACCHETTA 1
+        if(ball.x == PADDLE_WIDTH){
+            if(ball.y >= p1.y && ball.y <= (p1.y + PADDLE_HEIGHT)){
+                ball.setXDirection(ball.xVelocity * -1);
+            }
+        }
+        //PALLA CON RACCHETTA 2
+        if(ball.x == (GAME_WIDTH - PADDLE_WIDTH))
+            if(ball.y >= p2.y && ball.y <= (p2.y + PADDLE_HEIGHT))
+                ball.setXDirection(ball.xVelocity * -1);
     }
 
     public void run(){
@@ -90,19 +111,19 @@ public class GamePanel extends JPanel implements Runnable{
                 checkCollision();
                 repaint();
                 delta--;
-                System.out.println("TEST");
+                //System.out.println("TEST");
             }
         }
     }
 
     public class ActionListener extends KeyAdapter{
         public void keyPressed(KeyEvent e){
-            p1.keyPressed(e);
-            p2.keyPressed(e);
+            p1.keyPressed(e);// Tasti W e S
+            p2.keyPressed(e);// Tasti freccia SU e Freccia GIU
         }
         public void keyReleased(KeyEvent e){
-            p1.keyReleased(e);
-            p2.keyReleased(e);
+            p1.keyReleased(e);// Quando W o S vengono rilasciati la racchetta si ferma
+            p2.keyReleased(e);// Quando Freccia SU o Freccia GIU vengono rilasciati la racchetta si ferma
         }
     }
 }
