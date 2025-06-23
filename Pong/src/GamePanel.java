@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements Runnable{
         newBall();
         newPaddle();
         score = new Score(GAME_WIDTH,GAME_HEIGHT);
+
         this.addKeyListener(new ActionListener());
         this.setFocusable(true);
         this.setPreferredSize(SCREEN_SIZE);
@@ -102,6 +103,7 @@ public class GamePanel extends JPanel implements Runnable{
             ball.setXDirection(ball.xVelocity * -1);
 
         }*/
+
         //PALLA CON RACCHETTA 2
         if(ball.intersects(p2)){
             ball.xVelocity++;
